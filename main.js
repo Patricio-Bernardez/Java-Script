@@ -1,40 +1,28 @@
-//Funciones
+// Funcion
 function notaValida(nota) {
     nota = parseInt(nota);
     return !isNaN(nota) && nota >= 1 && nota <= 10;
 }
 
-function calcularPromedio(cuatrimestre1, cuatrimestre2, cuatrimestre3) {
-    return (cuatrimestre1 + cuatrimestre2 + cuatrimestre3) / 3;
+function calcularPromedio(notas) {
+    return notas.reduce((total, nota) => total + nota, 0) / notas.length;
 }
-let cuatrimestre1, cuatrimestre2, cuatrimestre3;
 
-//Ciclo
-do {
-    cuatrimestre1 = prompt("Ingresa la nota final del 1° cuatrimestre:");
-    if (!notaValida(cuatrimestre1)){
-        alert("Ingrese una nota del 1 al 10")
-    }
-} while (!notaValida(cuatrimestre1));
+const notasCuatrimestres = [];
 
-do {
-    cuatrimestre2 = prompt("Ingresa la nota final del 2° cuatrimestre:");
-    if (!notaValida(cuatrimestre2)){
-        alert("Ingrese una nota del 1 al 10")
-    }
-} while (!notaValida(cuatrimestre2));
+// Ciclo
+for (let i = 1; i <= 3; i++) {
+    let nota;
+    do {
+        nota = prompt(`Ingresa la nota final del ${i}° cuatrimestre:`);
+        if (!notaValida(nota)) {
+            alert("Ingrese una nota del 1 al 10");
+        }
+    } while (!notaValida(nota));
+    notasCuatrimestres.push(parseInt(nota));
+}
 
-
-do {
-    cuatrimestre3 = prompt("Ingresa la nota final del 3° cuatrimestre:");
-    if (!notaValida(cuatrimestre3)){
-        alert("Ingrese una nota del 1 al 10")
-    }
-} while (!notaValida(cuatrimestre3));
-
-let promedioFinal = calcularPromedio(parseInt(cuatrimestre1), parseInt(cuatrimestre2), parseInt(cuatrimestre3));
-
-promedioFinal = promedioFinal.toFixed(2);
+const promedioFinal = calcularPromedio(notasCuatrimestres).toFixed(2);
 
 console.log("El promedio final de los tres cuatrimestres es: " + promedioFinal);
 alert("El promedio final de los tres cuatrimestres es: " + promedioFinal);
