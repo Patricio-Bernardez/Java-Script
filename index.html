@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,18 @@
     <title>JavaScript</title>
 </head>
 <body>
-    
+    <div class="contenedor">
+        <h1>Calculadora de Nota Final</h1>
+        <p>Ingresa las notas de los tres cuatrimestres (del 1 al 10):</p>
+        <div class="contenedorNotas">
+            <input type="number" id="nota1" min="1" max="10" placeholder="1° cuatrimestre" required>
+            <input type="number" id="nota2" min="1" max="10" placeholder="2° cuatrimestre" required>
+            <input type="number" id="nota3" min="1" max="10" placeholder="3° cuatrimestre" required>
+        </div>
+        <button id="calcular">Calcular</button>
+        <p id="resultado"></p>
+    </div>
+
     <script src="main.js"></script>
 </body>
 </html>

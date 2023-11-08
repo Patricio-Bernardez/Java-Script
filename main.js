@@ -1,28 +1,20 @@
-// Funcion
-function notaValida(nota) {
-    nota = parseInt(nota);
-    return !isNaN(nota) && nota >= 1 && nota <= 10;
+function calcularPromedio() {
+    const nota1 = parseFloat(document.getElementById('nota1').value);
+    const nota2 = parseFloat(document.getElementById('nota2').value);
+    const nota3 = parseFloat(document.getElementById('nota3').value);
+
+    if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3) || nota1 < 1 || nota1 > 10 || nota2 < 1 || nota2 > 10 || nota3 < 1 || nota3 > 10) {
+        document.getElementById('resultado').textContent = "Ingresar notas validas del 1 al 10.";
+    } else {
+        const promedio = (nota1 + nota2 + nota3) / 3;
+        document.getElementById('resultado').textContent = "El promedio final es: " + promedio.toFixed(2);
+        const resultadoJSON = JSON.stringify({ promedio: promedio.toFixed(2) });
+        localStorage.setItem('resultado', resultadoJSON);
+    }
 }
-
-function calcularPromedio(notas) {
-    return notas.reduce((total, nota) => total + nota, 0) / notas.length;
+document.getElementById('calcular').addEventListener('click', calcularPromedio);
+const resultadoJSON = localStorage.getItem('resultado');
+if (resultadoJSON) {
+    const resultadoObj = JSON.parse(resultadoJSON);
+    document.getElementById('resultado').textContent = "Nota final: " + resultadoObj.promedio;
 }
-
-const notasCuatrimestres = [];
-
-// Ciclo
-for (let i = 1; i <= 3; i++) {
-    let nota;
-    do {
-        nota = prompt(`Ingresa la nota final del ${i}° cuatrimestre:`);
-        if (!notaValida(nota)) {
-            alert("Ingrese una nota del 1 al 10");
-        }
-    } while (!notaValida(nota));
-    notasCuatrimestres.push(parseInt(nota));
-}
-
-const promedioFinal = calcularPromedio(notasCuatrimestres).toFixed(2);
-
-console.log("El promedio final de los tres cuatrimestres es: " + promedioFinal);
-alert("El promedio final de los tres cuatrimestres es: " + promedioFinal);

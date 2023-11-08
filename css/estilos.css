@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    height: 100%;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+.contenedor{
+    width: 90%;
+    height: auto;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+input{
+    width: 190px;
+    height: 25px;
+    font-size: 18px;
+}
+button{
+    width: 80px;
+    height: 30px;
+    font-size: 20px;
+    margin-top: 20px;
+}
+h1{
+    font-size: 50px;
+}
+p{
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
